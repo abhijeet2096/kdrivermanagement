@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Service
+Name=Kde Driver Management
+
+X-KDE-ServiceTypes=KDEDModule
+X-KDE-Library=kdrivermanagement
+X-KDE-FactoryName=kdrivermanagement
+X-KDE-Kded-autoload=true
+
+Comment=Listens for hotplug devices and Searches for approprivate device driver, powered by ldm
