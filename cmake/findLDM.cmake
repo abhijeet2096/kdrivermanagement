@@ -4,13 +4,12 @@ if(LIBLDM_INCLUDE_DIRS AND LIBLDM_LIBRARIES)
 else ()
 
     find_library (LIBLDM_LIBRARIES
-        NAMES  fwupd libfwupd
+        NAMES libldm
     )
   
     find_path (LIBLDM_INCLUDE_DIRS
-        NAMES fwupd.h
-        PATH_SUFFIXES fwupd-1
-        HINTS fwupd-1/libfwupd
+        NAMES ldm.h
+        PATH_SUFFIXES linux-driver-management
     )
     
     if(LIBLDM_INCLUDE_DIRS AND LIBLDM_LIBRARIES)
