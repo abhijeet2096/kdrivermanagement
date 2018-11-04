@@ -14,19 +14,14 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *********************************************************************/
-#ifndef KDRIVERMANAGEMENT_SUITABLEDRIVER_H
-#define KDRIVERMANAGEMENT_SUITABLEDRIVER_H
+#ifndef KDRIVERMANAGEMENT_CONSTANTS_H
+#define KDRIVERMANAGEMENT_CONSTANTS_H
 
-#include "kdrivermanagement_export.h"
-
-namespace kdrivermanagement
+namespace KDriverManagement
 {
 
-class KDRIVERMANAGEMENT_EXPORT SuitableDriver : public QObject
-{
-    
-}
+// Static Constants defined here
 
 }
 
-#endif //KDRIVERMANAGEMENT_SUITABLEDRIVER_H
+#endif // KDRIVERMANAGEMENT_CONSTANTS_H

@@ -14,19 +14,23 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *********************************************************************/
-#ifndef KDRIVERMANAGEMENT_SUITABLEDRIVER_H
-#define KDRIVERMANAGEMENT_SUITABLEDRIVER_H
 
-#include "kdrivermanagement_export.h"
+#ifndef KDRIVERMANAGEMENTPLUGIN_H
+#define KDRIVERMANAGEMENTPLUGIN_H
 
-namespace kdrivermanagement
+#include <QQmlExtensionPlugin>
+
+namespace KDriverManagement
 {
 
-class KDRIVERMANAGEMENT_EXPORT SuitableDriver : public QObject
+class KDriverManagementPlugin : public QQmlExtensionPlugin
 {
-    
-}
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.qt-project.QT.QQmlExtensionInterface")
+private:
+    void registerTypes(const char *uri) override;
+};
 
 }
 
-#endif //KDRIVERMANAGEMENT_SUITABLEDRIVER_H
+#endif // KDriverManagementPLUGIN_H

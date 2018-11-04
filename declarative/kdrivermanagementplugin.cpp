@@ -14,19 +14,19 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *********************************************************************/
-#ifndef KDRIVERMANAGEMENT_SUITABLEDRIVER_H
-#define KDRIVERMANAGEMENT_SUITABLEDRIVER_H
 
-#include "kdrivermanagement_export.h"
+#include "kdrivermanagementplugin.h"
+#include "suitabledriver.h"
+#include "deviceenumerator.h"
 
-namespace kdrivermanagement
+namespace KDriverManagement
 {
 
-class KDRIVERMANAGEMENT_EXPORT SuitableDriver : public QObject
+void kdrivermanagementplugin::registerTypes(const char* uri)
 {
-    
+    Q_ASSERT(uri == QLatin1String("org.kde.kdrivermanagement"));
+    qmlRegisterType<SuitableDriver>(uri,0,1,"SuitableDriver");
+    qmlRegisterType<DeviceEnumerator>(uri,0,1,"DeviceEnumerator");
 }
 
 }
-
-#endif //KDRIVERMANAGEMENT_SUITABLEDRIVER_H

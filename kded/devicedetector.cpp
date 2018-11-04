@@ -14,19 +14,34 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *********************************************************************/
-#ifndef KDRIVERMANAGEMENT_SUITABLEDRIVER_H
-#define KDRIVERMANAGEMENT_SUITABLEDRIVER_H
+#include "devicedetector.h"
 
-#include "kdrivermanagement_export.h"
+#include <KPluginFactory>
+#include <KPluginLoader>
 
-namespace kdrivermanagement
+#include "../deviceenumerator.h"
+#include "../suitabledriver.h"
+
+K_PLUGIN_FACTORY_WITH_JSON(DeviceDetectorFactory,
+                           "kdrivermanagementdevicedetector.json",
+                           registerPlugin<DeviceDetector>();)
+
+DeviceDetector::DeviceDetector(QObject *parent, const QList<QVariant> &)
+{
+    m_enumerator = new KDriverManagement::DeviceEnumerator(this);
+    connect(m_enumerator,&KDriverManagement::DeviceEnumerator::dataUpdated, this
+            &DeviceDetector::resetDetector);
+    resetDetector();
+}
+
+void DeviceDetector::resetDetector()
 {
 
-class KDRIVERMANAGEMENT_EXPORT SuitableDriver : public QObject
+}
+
+void DeviceDetector::sendDevice()
 {
     
 }
 
-}
-
-#endif //KDRIVERMANAGEMENT_SUITABLEDRIVER_H
+#include "devicedetector.moc"

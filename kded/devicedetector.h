@@ -14,19 +14,31 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *********************************************************************/
-#ifndef KDRIVERMANAGEMENT_SUITABLEDRIVER_H
-#define KDRIVERMANAGEMENT_SUITABLEDRIVER_H
+#ifndef DEVICEDETECTOR_H
+#define DEVICEDETECTOR_H
 
-#include "kdrivermanagement_export.h"
+#include <kdedmodule.h>
 
-namespace kdrivermanagement
+namespace KDriverManagement
 {
-
-class KDRIVERMANAGEMENT_EXPORT SuitableDriver : public QObject
-{
-    
+class DeviceEnumerator;
+class SuitableDriver;
 }
 
-}
+class DeviceDetector : public KDEDModule
+{
+    Q_OBJECT
+public:
+    DeviceDetector(QObject* parent, , const QList<QVariant> &);
 
-#endif //KDRIVERMANAGEMENT_SUITABLEDRIVER_H
+public_Q_SLOTS:
+    void sendDevice();
+
+private:
+    void resetDetector();
+
+    KDriverManagement::DeviceEnumerator *m_enumerator = nullptr;
+    KDriverManagement::SuitableDriver *m_suitabledriver = nullptr;
+};
+
+#endif // DEVICEDETECTOR_H
