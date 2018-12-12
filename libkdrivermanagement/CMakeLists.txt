@@ -1,10 +1,13 @@
 add_subdirectory(declarative)
 add_subdirectory(kded)
+
 set(kdrivermanagement_LIB_SRCS
     suitabledriver.cpp
     deviceenumerator.cpp
     )
+
 add_library(kdrivermanagement ${kdrivermanagement_LIB_SRCS})
+
 generate_export_header(kdrivermanagement)
 
 target_include_directories(kdrivermanagement PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>" "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/kdrivermanagement>")
@@ -15,6 +18,7 @@ target_link_libraries(kdrivermanagement
 
                       Qt5::Core
                     PRIVATE
+                      KF5::WindowSystem
                       KF5::I18n
 
                       Qt5::DBus)
@@ -46,7 +50,8 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/LibKDriverManagementConfig.cmake
               ${CMAKE_CURRENT_BINARY_DIR}/LibKDriverManagementConfigVersion.cmake
         DESTINATION ${CMAKECONFIG_INSTALL_DIR})
 
-install(EXPORT libKDriverManagementLibraryTargets
+#[[install(EXPORT libKDriverManagementLibraryTargets
         NAMESPACE PW:
         DESTINATION ${CMAKECONFIG_INSTALL_DIR}
         FILE LibKDriverManagementLibraryTargets.cmake )
+]]
