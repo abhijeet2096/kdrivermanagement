@@ -50,6 +50,9 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/LibKDriverManagementConfig.cmake
               ${CMAKE_CURRENT_BINARY_DIR}/LibKDriverManagementConfigVersion.cmake
         DESTINATION ${CMAKECONFIG_INSTALL_DIR})
 
+
+#[[ See For this line and implement it the right way]]
+
 #[[install(EXPORT libKDriverManagementLibraryTargets
         NAMESPACE PW:
         DESTINATION ${CMAKECONFIG_INSTALL_DIR}

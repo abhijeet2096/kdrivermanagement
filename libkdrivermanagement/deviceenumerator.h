@@ -17,6 +17,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef KDRIVERMANAGEMENT_DEVICEENUMERATOR_H
 #define KDRIVERMANAGEMENT_DEVICEENUMERATOR_H
 
+#include <QObject>
+#include "kdrivermanagement_export.h"
+#include "kdrivermanagementconstants.h"
+
 class QDBusInterface;
 
 namespace KDriverManagement

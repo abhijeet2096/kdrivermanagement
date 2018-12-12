@@ -25,7 +25,7 @@ namespace kdrivermanagement
 class KDRIVERMANAGEMENT_EXPORT SuitableDriver : public QObject
 {
     
-}
+};
 
 }
 
