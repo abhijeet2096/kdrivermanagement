@@ -1,4 +1,3 @@
-cmake_minimum_required(VERSION 3.12)
 add_subdirectory(declarative)
 add_subdirectory(kded)
 set(kdrivermanagement_LIB_SRCS
@@ -9,6 +8,16 @@ add_library(kdrivermanagement ${kdrivermanagement_LIB_SRCS})
 generate_export_header(kdrivermanagement)
 
 target_include_directories(kdrivermanagement PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>" "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/kdrivermanagement>")
+
+target_link_libraries(kdrivermanagement
+                    PUBLIC
+                      KF5::Plasma
+
+                      Qt5::Core
+                    PRIVATE
+                      KF5::I18n
+
+                      Qt5::DBus)
 
 set_target_properties(kdrivermanagement PROPERTIES
                       VERSION ${PROJECT_VERSION}
@@ -38,5 +47,6 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/LibKDriverManagementConfig.cmake
         DESTINATION ${CMAKECONFIG_INSTALL_DIR})
 
 install(EXPORT libKDriverManagementLibraryTargets
+        NAMESPACE PW:
         DESTINATION ${CMAKECONFIG_INSTALL_DIR}
         FILE LibKDriverManagementLibraryTargets.cmake )
