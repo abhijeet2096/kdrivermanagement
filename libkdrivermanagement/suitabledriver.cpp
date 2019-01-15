@@ -18,5 +18,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace KDriverManagement
 {
-    
+
+// Default Constructor
+SuitableDriver::SuitableDriver(QObject *parent)
+    : QObject(parent)
+{
+
+}
+
 }

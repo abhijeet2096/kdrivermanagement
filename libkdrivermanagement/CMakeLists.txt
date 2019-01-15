@@ -19,7 +19,6 @@ target_link_libraries(kdrivermanagement
                       Qt5::Core
                     PRIVATE
                       KF5::WindowSystem
-                      KF5::I18n
 
                       Qt5::DBus)
 

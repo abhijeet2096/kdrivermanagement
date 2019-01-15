@@ -29,6 +29,15 @@ namespace KDriverManagement
 class KDRIVERMANAGEMENT_EXPORT DeviceEnumerator : public QObject
 {
     Q_OBJECT
+
+public:
+
+public Q_SLOTS:
+
+Q_SIGNALS:
+
+private:
+
 };
 
 }

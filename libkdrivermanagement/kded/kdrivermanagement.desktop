@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Service
-Name=Kde Driver Management Device Detector
+Name=KDE Driver Management Device Detector
 
 X-KDE-ServiceTypes=KDEDModule
 X-KDE-Library=kdrivermanagementdevicedetector

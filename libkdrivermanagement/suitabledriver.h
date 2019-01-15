@@ -17,14 +17,26 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef KDRIVERMANAGEMENT_SUITABLEDRIVER_H
 #define KDRIVERMANAGEMENT_SUITABLEDRIVER_H
 
+#include <QObject>
+#include <QString>
+
 #include "kdrivermanagement_export.h"
 
-namespace kdrivermanagement
+namespace KDriverManagement
 {
 
 class KDRIVERMANAGEMENT_EXPORT SuitableDriver : public QObject
 {
-    
+    Q_OBJECT
+
+public:
+
+private Q_SLOTS:
+
+Q_SIGNALS:
+
+private:
+
 };
 
 }

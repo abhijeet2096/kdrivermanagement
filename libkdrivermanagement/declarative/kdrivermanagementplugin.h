@@ -27,10 +27,11 @@ class KDriverManagementPlugin : public QQmlExtensionPlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.qt-project.QT.QQmlExtensionInterface")
+
 private:
     void registerTypes(const char *uri) override;
 };
 
 }
 
-#endif // KDriverManagementPLUGIN_H
+#endif // KDRIVERMANAGEMENTPLUGIN_H
