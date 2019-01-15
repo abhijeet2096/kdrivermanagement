@@ -15,11 +15,10 @@ target_include_directories(kdrivermanagement PUBLIC "$<BUILD_INTERFACE:${CMAKE_C
 target_link_libraries(kdrivermanagement
                     PUBLIC
                       KF5::Plasma
-
+                      PkgConfig::ldm
                       Qt5::Core
                     PRIVATE
                       KF5::WindowSystem
-
                       Qt5::DBus)
 
 set_target_properties(kdrivermanagement PROPERTIES

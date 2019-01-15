@@ -22,13 +22,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "../deviceenumerator.h"
 #include "../suitabledriver.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(DeviceDetectorFactory,
+K_PLUGIN_CLASS_WITH_JSON(DeviceDetector,
                            "kdrivermanagementdevicedetector.json")
 
 DeviceDetector::DeviceDetector(QObject *parent, const QList<QVariant> &)
 {
     m_enumerator = new KDriverManagement::DeviceEnumerator(this);
-    connect(m_enumerator,&KDriverManagement::DeviceEnumerator::dataUpdated, this
+    connect(m_enumerator,&KDriverManagement::DeviceEnumerator::dataUpdated, this,
             &DeviceDetector::resetDetector);
     resetDetector();
 }

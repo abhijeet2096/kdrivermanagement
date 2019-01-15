@@ -30,6 +30,8 @@ class KDRIVERMANAGEMENT_EXPORT SuitableDriver : public QObject
     Q_OBJECT
 
 public:
+    explicit SuitableDriver(QObject *parent = nullptr);
+    ~SuitableDriver() override = default;
 
 private Q_SLOTS:
 
