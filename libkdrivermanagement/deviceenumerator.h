@@ -21,6 +21,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "kdrivermanagement_export.h"
 #include "kdrivermanagementconstants.h"
 
+extern "C" {
+#include <ldm.h>
+}
+
 class QDBusInterface;
 
 namespace KDriverManagement
@@ -29,6 +33,30 @@ namespace KDriverManagement
 class KDRIVERMANAGEMENT_EXPORT DeviceEnumerator : public QObject
 {
     Q_OBJECT
+
+    Q_PROPERTY(bool running READ running NOTIFY runningChanged)
+
+public:
+    explicit DeviceEnumerator(QObject *parent = nullptr);
+    ~DeviceEnumerator() override = default;
+
+    bool running() const {
+        return m_running;
+    }
+
+public Q_SLOTS:
+
+Q_SIGNALS:
+
+    void dataUpdated();
+    void runningChanged();
+
+private:
+    bool m_running = false;
+
+    LdmManager *m_ldm_device_manager;
+    QList<LdmDevice*> m_ldm_device_list;
+
 };
 
 }

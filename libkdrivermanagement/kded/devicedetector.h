@@ -29,9 +29,9 @@ class DeviceDetector : public KDEDModule
 {
     Q_OBJECT
 public:
-    DeviceDetector(QObject* parent, , const QList<QVariant> &);
+    DeviceDetector(QObject* parent, const QList<QVariant> &);
 
-public_Q_SLOTS:
+public Q_SLOTS:
     void sendDevice();
 
 private:

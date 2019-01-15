@@ -19,10 +19,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "suitabledriver.h"
 #include "deviceenumerator.h"
 
+#include <QQmlEngine>
+
 namespace KDriverManagement
 {
 
-void kdrivermanagementplugin::registerTypes(const char* uri)
+void KDriverManagementPlugin::registerTypes(const char* uri)
 {
     Q_ASSERT(uri == QLatin1String("org.kde.kdrivermanagement"));
     qmlRegisterType<SuitableDriver>(uri,0,1,"SuitableDriver");

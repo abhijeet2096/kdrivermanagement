@@ -18,5 +18,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace KDriverManagement
 {
-    
+
+// Class Constructor
+DeviceEnumerator::DeviceEnumerator(QObject *parent)
+    : QObject(parent)
+    , m_ldm_device_manager(ldm_manager_new(LDM_MANAGER_FLAGS_NONE))
+{
+    // Get Devices from LDM
+    g_autoptr(GPtrArray) devices = ldm_manager_get_devices(m_ldm_device_manager, LDM_DEVICE_TYPE_ANY);
+    // Populate Class Device List 
+    for(uint i = 0; i < devices->len; i++)
+    {
+        m_ldm_device_list.append((LdmDevice*)devices->pdata[i]);
+    }
+}
+
 }
