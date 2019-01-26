@@ -16,6 +16,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *********************************************************************/
 #include "deviceenumerator.h"
 
+#include <QDBusReply>
+#include <QDBusInterface>
+
 namespace KDriverManagement
 {
 
@@ -24,6 +27,23 @@ DeviceEnumerator::DeviceEnumerator(QObject *parent)
     : QObject(parent)
     , m_ldm_device_manager(ldm_manager_new(LDM_MANAGER_FLAGS_NONE))
 {
+    // Check for bus name
+    m_iface = new QDBusInterface (QStringLiteral("org.kde.kdrivermanager"),
+                                QStringLiteral("/kdrivermanager"),
+                                QStringLiteral("org.kde.kdrivermanager.kdrivermanager"),
+                                QDBusConnection::sessionBus(),
+                                this);
+    if (!m_iface->connection().connect(QString(), QStringLiteral("/kdrivermanager"),
+                                          QStringLiteral("org.kde.kdrivermanager.kdrivermanager"), QStringLiteral("nightColorConfigChanged"),
+                                          this, SLOT(compDataUpdated(QHash<QString, QVariant>)))) {
+        setError(ErrorCode::ErrorCodeConnectionFailed);
+        return;
+    }
+    UpdateDeviceList();
+}
+
+void DeviceEnumerator::UpdateDeviceList()
+{
     // Get Devices from LDM
     g_autoptr(GPtrArray) devices = ldm_manager_get_devices(m_ldm_device_manager, LDM_DEVICE_TYPE_ANY);
     // Populate Class Device List 
@@ -31,6 +51,4 @@ DeviceEnumerator::DeviceEnumerator(QObject *parent)
     {
         m_ldm_device_list.append((LdmDevice*)devices->pdata[i]);
     }
-}
-
 }

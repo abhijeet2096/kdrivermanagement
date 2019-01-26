@@ -4,8 +4,11 @@ set(kcm_SRCS
     main.cpp
     Module.cpp
     KDriverWidget.cpp
+    kdrivermanager.cpp
+    kdrivermanagerdbusinterface.h
 )
 
+qt5_add_dbus_adaptor( kcm_SRCS org.kde.kdrivermanager.KDriverManager.xml kdrivermanagerdbusinterface.h kdrivermanager::KDriverManagerDBusInterface )
 qt5_wrap_ui(kcm_SRCS Module.ui KDriverWidget.ui)
 
 add_library(kcm_KDriverManager MODULE ${kcm_SRCS})
@@ -18,4 +21,7 @@ target_link_libraries(kcm_KDriverManager
 
 install(TARGETS kcm_KDriverManager DESTINATION ${PLUGIN_INSTALL_DIR})
 install(FILES kcm_KDriverManager.desktop DESTINATION ${SERVICES_INSTALL_DIR})
+install(FILES org.kde.kdrivermanager.KDriverManager.xml DESTINATION ${KDE_INSTALL_DBUSINTERFACEDIR})
+
+
 #install(PROGRAMS ${CMAKE_CURRENT_SOURCE_DIR}/DriverManager_DBus DESTINATION ${LIBEXEC_INSTALL_DIR})

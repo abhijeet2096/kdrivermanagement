@@ -26,7 +26,7 @@ namespace KDriverManagement
 class KDriverManagementPlugin : public QQmlExtensionPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.QT.QQmlExtensionInterface")
+    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QQmlExtensionInterface")
 
 private:
     void registerTypes(const char *uri) override;

@@ -1,6 +1,4 @@
 /*
-    Copyright (C) 2014  Rohan Garg <rohan@kde.org>
-    Copyright (C) 2014 Harald Sitter <apachelogger@kubuntu.org>
     Copyright (C) 2018 Abhijeet Sharma <sharma.abhijeet2096@gmail.com>
 
     This program is free software; you can redistribute it and/or

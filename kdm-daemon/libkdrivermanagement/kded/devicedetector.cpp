@@ -35,7 +35,7 @@ DeviceDetector::DeviceDetector(QObject *parent, const QList<QVariant> &)
 
 void DeviceDetector::resetDetector()
 {
-
+    
 }
 
 void DeviceDetector::sendDevice()

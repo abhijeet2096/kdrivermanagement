@@ -18,29 +18,38 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef KDRIVERWIDGET_H
-#define KDRIVERWIDGET_H
+#ifndef KDRIVERMANAGER_H
+#define KDRIVERMANAGER_H
 
-#include <QWidget>
+#include <QObject>
 
-namespace Ui{
-class Form;
-}
+namespace kdrivermanager
+{
 
-class QButtonGroup;
-class QAbstractButton;
+class KDriverManagerDBusInterface;
 
-class KDriverWidget : public QWidget
+class KDriverManager : public QObject
 {
     Q_OBJECT
+
 public:
-    KDriverWidget(QWidget *parent=nullptr);
-    ~KDriverWidget();
+    KDriverManager(QObject *parent);
+    ~KDriverManager();
+
+    void autoDeviceUpdate();
+
+// public Q_SLOTS:
+
+// QSIGNALS:
 
 private:
-    Ui::Form *ui;
-    QButtonGroup *m_radioGroup;
+
+    KDriverManagerDBusInterface *m_iface;
 
 };
 
-#endif // KDRIVERWIDGET_H
+}
+
+#endif // KDRIVERMANAGER_H
+
+

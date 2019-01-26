@@ -56,6 +56,9 @@ private:
 
     LdmManager *m_ldm_device_manager;
     QList<LdmDevice*> m_ldm_device_list;
+    QDBusInterface *m_iface;
+    
+    void UpdateDeviceList();
 
 };
 

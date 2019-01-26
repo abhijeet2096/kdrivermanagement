@@ -18,29 +18,40 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef KDRIVERWIDGET_H
-#define KDRIVERWIDGET_H
+#ifndef KDRIVERMANAGER_DBUS_INTERFACE_H
+#define KDRIVERMANAGER_DBUS_INTERFACE_H
 
-#include <QWidget>
+#include <QObject>
+#include <QtDBus>
 
-namespace Ui{
-class Form;
-}
+namespace kdrivermanager
+{
+class KDriverManager;
 
-class QButtonGroup;
-class QAbstractButton;
-
-class KDriverWidget : public QWidget
+class KDriverManagerDBusInterface : public QObject
 {
     Q_OBJECT
+    Q_CLASSINFO("D-Bus Interface", "org.kde.kdrivermanager.KDriverManager");
+
 public:
-    KDriverWidget(QWidget *parent=nullptr);
-    ~KDriverWidget();
+    explicit KDriverManagerDBusInterface(KDriverManager *parent);
+    virtual ~KDriverManagerDBusInterface() = default;
+
+public Q_SLOTS:
+    /**
+     * @brief For receiving new device updates, primarily through the KDE Daemon
+     * @return void
+     **/
+    void deviceListAutoUpdate();
+
+Q_SIGNALS:
+
+    void deviceListChanged();
 
 private:
-    Ui::Form *ui;
-    QButtonGroup *m_radioGroup;
-
+    KDriverManager *m_manager;
 };
 
-#endif // KDRIVERWIDGET_H
+}
+
+#endif // KDRIVERMANAGER_DBUS_INTERFACE_H
