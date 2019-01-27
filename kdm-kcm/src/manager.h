@@ -18,8 +18,10 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef KDRIVERMANAGER_H
-#define KDRIVERMANAGER_H
+#ifndef KDM_MANAGER_H
+#define KDM_MANAGER_H
+
+#include <kdm_export.h>
 
 #include <QObject>
 #include<QHash>
@@ -31,7 +33,7 @@ namespace KDM
 
 class KDriverManagerDBusInterface;
 
-class Manager : public QObject
+class KDM_EXPORT Manager : public QObject
 {
     Q_OBJECT
 
@@ -55,6 +57,6 @@ private:
 
 }
 
-#endif // KDRIVERMANAGER_H
+#endif // KDM_MANAGER_H
 
 

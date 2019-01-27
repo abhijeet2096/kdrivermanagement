@@ -23,6 +23,6 @@
 #include "Module.h"
 
 K_PLUGIN_FACTORY(KcmDriverFactory,
-                 registerPlugin<Module>("kcm-KDriverManager");)
+                 registerPlugin<Module>("kcm-kdm");)
 
 #include "main.moc"

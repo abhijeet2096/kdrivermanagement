@@ -18,8 +18,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef KDRIVERMANAGER_DBUS_INTERFACE_H
-#define KDRIVERMANAGER_DBUS_INTERFACE_H
+#ifndef KDM_DBUS_INTERFACE_H
+#define KDM_DBUS_INTERFACE_H
 
 #include <QObject>
 #include <QtDBus>
@@ -32,8 +32,8 @@ class Manager;
 
 class KDriverManagerDBusInterface : public QObject
 {
-    Q_OBJECT;
-    Q_CLASSINFO("D-Bus Interface", "org.kde.kdm.KDriverManager");
+    Q_OBJECT
+    Q_CLASSINFO("D-Bus Interface", "org.kde.kdm.KDriverManager")
 
 public:
     explicit KDriverManagerDBusInterface(Manager *parent);
@@ -56,4 +56,4 @@ private:
 
 }
 
-#endif // KDRIVERMANAGER_DBUS_INTERFACE_H
+#endif // KDM_DBUS_INTERFACE_H

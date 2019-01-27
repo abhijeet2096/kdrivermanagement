@@ -1,13 +1,13 @@
 [Desktop Entry]
 Type=Service
 Icon=hwinfo
-Exec=kcmshell5 kcm_KDriverManager
+Exec=kcmshell5 kcm_kdm
 
-X-KDE-Library=kcm_KDriverManager
+X-KDE-Library=kcm_kdm
 X-KDE-ServiceTypes=KCModule
 X-KDE-System-Settings-Parent-Category=hardware
 X-KDE-ParentApp=kcontrol
-X-KDE-PluginKeyword=kcm-KDriverManager
+X-KDE-PluginKeyword=kcm-kdm
 X-KDE-Keywords=drivers
 
 Name=Driver Manager
