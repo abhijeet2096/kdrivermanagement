@@ -24,17 +24,19 @@
 #include <QObject>
 #include <QtDBus>
 
-namespace kdrivermanager
+
+namespace KDM
 {
-class KDriverManager;
+    
+class Manager;
 
 class KDriverManagerDBusInterface : public QObject
 {
-    Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.kde.kdrivermanager.KDriverManager");
+    Q_OBJECT;
+    Q_CLASSINFO("D-Bus Interface", "org.kde.kdm.KDriverManager");
 
 public:
-    explicit KDriverManagerDBusInterface(KDriverManager *parent);
+    explicit KDriverManagerDBusInterface(Manager *parent);
     virtual ~KDriverManagerDBusInterface() = default;
 
 public Q_SLOTS:
@@ -42,14 +44,14 @@ public Q_SLOTS:
      * @brief For receiving new device updates, primarily through the KDE Daemon
      * @return void
      **/
-    void deviceListAutoUpdate();
+    void deviceListAutoUpdate(QHash<QString, QVariant> data);
 
 Q_SIGNALS:
 
-    void deviceListChanged();
+    void deviceListChanged(QHash<QString, QVariant> data);
 
 private:
-    KDriverManager *m_manager;
+    Manager *m_manager;
 };
 
 }

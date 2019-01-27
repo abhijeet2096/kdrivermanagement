@@ -19,24 +19,25 @@
 */
 
 #include "kdrivermanagerdbusinterface.h"
-#include "kdrivermanageradapter.h"
+#include <kdrivermanageradaptor.h>
 
-#include "kdrivermanager.h"
+#include "manager.h"
 
-namespace kdrivermanager
+namespace KDM
 {
 
-KDriverManagerDBusInterface::KDriverManagerDBusInterface(KDriverManager *parent)
+KDriverManagerDBusInterface::KDriverManagerDBusInterface(Manager *parent)
     : QObject(parent)
     , m_manager(parent)
 {
+    connect(m_manager, &Manager::configChange, this, &KDriverManagerDBusInterface::deviceListChanged);
     new KDriverManagerAdaptor(this);
     QDBusConnection::sessionBus().registerObject(QStringLiteral("/KDriverManager"), this);
 }
 
-void KDriverManagerDBusInterface::deviceListAutoUpdate()
+void KDriverManagerDBusInterface::deviceListAutoUpdate(QHash<QString, QVariant> data)
 {
-    m_manager->autoDeviceUpdate();
+    m_manager->autoDeviceUpdate(data);
 }
 
 

@@ -17,39 +17,28 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "manager.h"
+#include "kdrivermanagerdbusinterface.h"
 
-#ifndef KDRIVERMANAGER_H
-#define KDRIVERMANAGER_H
+#include <QDBusConnection>
 
-#include <QObject>
-
-namespace kdrivermanager
+namespace KDM
 {
 
-class KDriverManagerDBusInterface;
-
-class KDriverManager : public QObject
+Manager::Manager(QObject* parent)
+    : QObject(parent)
 {
-    Q_OBJECT
+    m_iface = new KDriverManagerDBusInterface(this);
+}
 
-public:
-    KDriverManager(QObject *parent);
-    ~KDriverManager();
-
-    void autoDeviceUpdate();
-
-// public Q_SLOTS:
-
-// QSIGNALS:
-
-private:
-
-    KDriverManagerDBusInterface *m_iface;
-
-};
+Manager::~Manager()
+{
 
 }
 
-#endif // KDRIVERMANAGER_H
+void Manager::autoDeviceUpdate(QHash<QString, QVariant> data)
+{
+    m_data = data;
+}
 
-
+}

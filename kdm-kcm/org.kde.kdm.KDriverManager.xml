@@ -1,0 +1,13 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN" "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="org.kde.kdm.KDriverManager" value="QHash&lt;QString,QVariant&gt;">
+    <method name="deviceListAutoUpdate">
+      <annotation name="org.qtproject.QtDBus.QtTypeName.In0" value="QHash&lt;QString,QVariant&gt;"/>
+      <arg type="a{sv}" direction="in"/>
+    </method>
+    <signal name="deviceListChanged">
+      <annotation name="org.qtproject.QtDBus.QtTypeName.Out0"  value="QHash&lt;QString,QVariant&gt;"/>
+      <arg type="a{sv}" direction="out"/>
+    </signal>
+  </interface>
+</node>
