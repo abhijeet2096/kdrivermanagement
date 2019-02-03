@@ -14,33 +14,24 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *********************************************************************/
-#include "devicedetector.h"
 
-#include <KPluginFactory>
-#include <KPluginLoader>
+#ifndef KDRIVERMANAGEMENTPLUGIN_H
+#define KDRIVERMANAGEMENTPLUGIN_H
 
-#include "../deviceenumerator.h"
-#include "../suitabledriver.h"
+#include <QQmlExtensionPlugin>
 
-K_PLUGIN_CLASS_WITH_JSON(DeviceDetector,
-                           "kdrivermanagementdevicedetector.json")
-
-DeviceDetector::DeviceDetector(QObject *parent, const QList<QVariant> &)
+namespace KDriverManagement
 {
-    m_enumerator = new KDriverManagement::DeviceEnumerator(this);
-    connect(m_enumerator,&KDriverManagement::DeviceEnumerator::dataUpdated, this,
-            &DeviceDetector::resetDetector);
-    resetDetector();
-}
 
-void DeviceDetector::resetDetector()
+class KDriverManagementPlugin : public QQmlExtensionPlugin
 {
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QQmlExtensionInterface")
+
+private:
+    void registerTypes(const char *uri) override;
+};
 
 }
 
-void DeviceDetector::sendDevice()
-{
-    
-}
-
-#include "devicedetector.moc"
+#endif // KDRIVERMANAGEMENTPLUGIN_H

@@ -14,24 +14,54 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *********************************************************************/
+#ifndef KDRIVERMANAGEMENT_DEVICEENUMERATOR_H
+#define KDRIVERMANAGEMENT_DEVICEENUMERATOR_H
 
-#ifndef KDRIVERMANAGEMENTPLUGIN_H
-#define KDRIVERMANAGEMENTPLUGIN_H
+#include <QObject>
+#include "kdrivermanagement_export.h"
+#include "kdrivermanagementconstants.h"
 
-#include <QQmlExtensionPlugin>
+extern "C" {
+#include <ldm.h>
+}
+
+class QDBusInterface;
 
 namespace KDriverManagement
 {
 
-class KDriverManagementPlugin : public QQmlExtensionPlugin
+class KDRIVERMANAGEMENT_EXPORT DeviceEnumerator : public QObject
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.qt-project.QT.QQmlExtensionInterface")
+
+    Q_PROPERTY(bool running READ running NOTIFY runningChanged)
+
+public:
+    explicit DeviceEnumerator(QObject *parent = nullptr);
+    ~DeviceEnumerator() override = default;
+
+    bool running() const {
+        return m_running;
+    }
+
+public Q_SLOTS:
+
+Q_SIGNALS:
+
+    void dataUpdated();
+    void runningChanged();
 
 private:
-    void registerTypes(const char *uri) override;
+    bool m_running = false;
+
+    LdmManager *m_ldm_device_manager;
+    QList<LdmDevice*> m_ldm_device_list;
+    QDBusInterface *m_iface;
+    
+    void UpdateDeviceList();
+
 };
 
 }
 
-#endif // KDRIVERMANAGEMENTPLUGIN_H
+#endif // KDRIVERMANAGEMENT_DEVICEENUMERATOR_H
