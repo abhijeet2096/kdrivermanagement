@@ -1,0 +1,6 @@
+kdm-daemon/build
+kdm-kcm/build
+.vscode
+.idea
+kdm-daemon/.kde4
+cmake-build-debug
