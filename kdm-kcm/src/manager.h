@@ -21,7 +21,7 @@
 #ifndef KDM_MANAGER_H
 #define KDM_MANAGER_H
 
-#include <kdm_export.h>
+// #include <kdm_export.h>
 
 #include <QObject>
 #include<QHash>
@@ -33,7 +33,7 @@ namespace KDM
 
 class KDriverManagerDBusInterface;
 
-class KDM_EXPORT Manager : public QObject
+class Manager : public QObject
 {
     Q_OBJECT
 

@@ -19,7 +19,7 @@
 */
 
 #include "kdrivermanagerdbusinterface.h"
-#include <kdrivermanageradaptor.h>
+#include "kdrivermanageradaptor.h"
 
 #include "manager.h"
 
